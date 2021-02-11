@@ -16,6 +16,10 @@ end
 Quando('voltar para a lista de roupas') do
   @home.backToShop
 end
+
+Quando('entrarmos na pagina do carrinho pela janela do item') do
+  @home.clickNextCheckout
+end
   
 Então('o ultimo item que foi adicionado ao carrinho foi o {string}') do |primeiroItem|
   @base.cartOptions("Check out")

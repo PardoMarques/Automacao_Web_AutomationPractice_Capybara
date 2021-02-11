@@ -3,6 +3,7 @@ class HomePage < BasePage
     # mapeamento dos elementos
 
         element :box_productList, '#homefeatured'
+        element :box_layerCart, '#layer_cart'
 
         element :btn_continueShop, 'div.button-container > span > span > i'
 
@@ -29,6 +30,12 @@ class HomePage < BasePage
 
         def backToShop
             btn_continueShop.click
+        end
+
+        def clickNextCheckout
+            sleep(2)
+            box_layerCart.click_on('Proceed to checkout')
+            sleep(2)
         end
     
         def go
