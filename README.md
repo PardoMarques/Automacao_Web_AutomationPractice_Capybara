@@ -1,6 +1,9 @@
 # *AutomatitionPractice.com*
 
-Este projeto de testes gira em torno de um e-commerce criado para fins de estudos de testes automatizados de interface. 
+<i>Desafio BRQ</i>
+
+Este projeto trata-se de uma automatização de testes de um e-commerce criado para fins de estudos.
+
 
 As gems utilizadas neste projeto são as
 	
