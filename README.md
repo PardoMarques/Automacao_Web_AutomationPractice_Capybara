@@ -1,4 +1,4 @@
-# *AutomatitionPractice.com*
+# *AutomationPractice.com*
 
 <i>Desafio BRQ</i>
 
