@@ -29,10 +29,10 @@ $ gem install bundler
 $ bundle install
 
 
-#Para executar o projeto
+# Para executar o projeto
 $ cucumber
 
-#Para executar o projeto em alguma feature especifica a partir da tag
+# Para executar o projeto em alguma feature especifica a partir da tag
 exemplo:
 $ cucumber -t @home_preco
 
