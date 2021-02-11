@@ -1,16 +1,14 @@
-#language: pt
 #language:pt
+@checkout
 Funcionalidade: Finalizando a compra
 
-Como: um possível comprador
-Quero: Validar os fluxos da página principal
-Para: Testar a conclusao de uma compra simples
+Como: um usuário que ira finalizar a comprar de um item
+Quero: validar todo o fluxo da compra
+Para: testar a conclusao de uma compra simples
 
-Contexto: Acessar a pagina
-Dado o usuário acessar a página
-
-@teste_0
-Cenario: Inserir duas roupas no carrinho
-Quando clicar em um item cujo o nome seja "Faded Short Sleeve T-shirts"
-E seguir para a página de Checkout
-Então o numero de itens no carrinho é "2"
+Cenario: Fluxo de Compra Completo
+Dado realizar a compra de dois itens
+E realizar os procedimentos de cadastro
+Quando aceitar os termos de autentificação
+E finalizar a compra com um cartão
+Então será retornado a mensagem de sucesso da conclusão da compra

@@ -1,16 +1,14 @@
 #language:pt
+@signin
 Funcionalidade: Logar
 
-Como: um possível comprador
-Quero: Validar os fluxos da página principal
-Para: Testar a conclusao de uma compra simples
+Como: um novo usuário
+Quero: validar a página de login
+Para: possibilitar a continuação dos demais testes
 
-Contexto: Acessar a pagina
-Dado o usuário acessar a página
+#@signin_login
 
-@teste_0
-Cenario: Inserir duas roupas no carrinho
-Quando clicar em um item cujo o nome seja "Faded Short Sleeve T-shirts"
-E voltar para a lista de roupas
-E clicar em um item cujo o nome seja "Faded Short Sleeve T-shirts"
-Então o numero de itens no carrinho é "2"
+@signin_newacc
+Cenario: Validar o fluxo da pagina de cadastro
+Dado o usuário acessar a página de cadastro
+Então estará contido o seguinte texto "CREATE AN ACCOUNT" na página

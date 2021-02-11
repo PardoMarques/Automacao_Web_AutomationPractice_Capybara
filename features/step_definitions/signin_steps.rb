@@ -1,4 +1,5 @@
-
-Quando('o usuário {string} com a senha {string} efetuar o login') do |userName, password|
-    @login.doLogin(userName, password)
+Dado('o usuário acessar a página de cadastro') do
+    @signIn.go
+    @signIn.createNewAcc('qwertyuiop@asdfg.com')
+    sleep(3)
 end

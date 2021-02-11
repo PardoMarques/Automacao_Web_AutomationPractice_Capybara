@@ -1,4 +1,3 @@
-# Before sem uma tag executa antes de todos os cenários
 Before do
 
     @base = BasePage.new
@@ -12,12 +11,16 @@ end
 After do
 end
   
-# Anexar os prints ao relatório
+# Printar falhas de execução
 After do |scenario|
 
-    nome_cenario = scenario.name.tr(' ', '_').downcase!
-    nome_cenario = nome_cenario.gsub(/([_@#!%()\-=;><,{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/,'') # Limpar Expressões Regulares
-    screenshot = "features/logs/shots/#{nome_cenario}.png"
-    page.save_screenshot(screenshot)
+    if scenario.failed?
+
+        nome_cenario = scenario.name.tr(' ', '_').downcase!
+        nome_cenario = nome_cenario.gsub(/([_@#!%()\-=;><,{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/,'') # Limpar Expressões Regulares
+        screenshot = "features/logs/shots/#{nome_cenario}.png"
+        page.save_screenshot(screenshot)
+
+    end
 
 end
