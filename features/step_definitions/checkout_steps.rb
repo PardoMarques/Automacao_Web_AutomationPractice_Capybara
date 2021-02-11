@@ -42,12 +42,36 @@ Quando('entrarmos na pagina do carrinho') do
     sleep(5)
 end
 
-Quando('aceitar os termos de autentificação') do
-    binding.pry
+Quando('prosseguir checkout') do
+    @checkout.clickProcessCheckout
 end
-  
-Quando('finalizar a compra com um cartão') do
-    binding.pry
+
+Quando('prosseguir endereço') do
+    @checkout.clickProcessAddress
+end
+
+Quando('aceitar os termos de autentificação e prosseguir envio') do
+    @checkout.clickProcessShipping
+end
+
+Quando('prosseguir pagamento') do
+    @checkout.clickBankWire
+end
+
+Quando('finalizar a ordem') do
+    @checkout.clickFinalButton
+end
+
+Então('estara na pagina onde ira decidir a forma de pagamento') do
+    expect(page).to have_content 'PLEASE CHOOSE YOUR PAYMENT METHOD'
+end
+
+Então('estara na pagina final do processo') do
+    expect(page).to have_content 'BANK-WIRE PAYMENT.'
+end
+
+Então('a mensagem de conclusão do processo irá aparecer') do
+    expect(page).to have_content 'Your order on My Store is complete.'
 end
   
 Então('validamos se o valor final da compra esta correto') do
@@ -62,7 +86,16 @@ Então('validamos se o valor final da compra esta correto') do
 end
 
 Então('validamos se os dados do endereço estão corretos') do
-    @checkout.expectAddress(@dados)
+    hashTemp = @checkout.expectAddress(@dados)
+
+    expect(hashTemp['adressName']).to have_content @checkout.text_AdressName.text
+    expect(hashTemp['adressName']).to have_content @checkout.text_AdressName.text 
+    expect(hashTemp['adressComp']).to have_content @checkout.text_AdressComp.text 
+    expect(hashTemp['adressA1']).to have_content @checkout.text_AdressA1.text 
+    #expect(hashTemp['adressCity']).to have_content @checkout.text_AdressCity.text 
+    expect(hashTemp['adressCountry']).to have_content @checkout.text_AdressCountry.text 
+    expect(hashTemp['adressTel']).to have_content @checkout.text_AdressTel.text 
+    expect(hashTemp['adressCel']).to have_content @checkout.text_AdressCel.text 
 end
 
 

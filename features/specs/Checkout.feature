@@ -12,6 +12,11 @@ E realizar a compra de dois itens que custam "$16.51" e "$27.00"
 Quando entrarmos na pagina do carrinho pela janela do item
 Então validamos se o valor final da compra esta correto
 E validamos se os dados do endereço estão corretos
-E aceitar os termos de autentificação
-E finalizar a compra com um cartão
-Então será retornado a mensagem de sucesso da conclusão da compra
+Quando prosseguir checkout
+E prosseguir endereço
+E aceitar os termos de autentificação e prosseguir envio
+Então estara na pagina onde ira decidir a forma de pagamento
+Quando prosseguir pagamento
+Então estara na pagina final do processo
+Quando finalizar a ordem
+Então a mensagem de conclusão do processo irá aparecer

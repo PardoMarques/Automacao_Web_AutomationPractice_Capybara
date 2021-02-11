@@ -1,10 +1,18 @@
+require 'rspec'
+
 class CheckoutPage < BasePage
 
   # mapeamento
 
     element :box_firstCard, 'tbody > .first_item'
     element :text_totalPrice, '#total_price'
-
+    element :btn_processCheckout, "#center_column a[title='Proceed to checkout']"
+    element :btn_processAdress, '#center_column button'
+    element :btn_processShipping, "#form > p > button"
+    element :checkbox_agreeTerms, "#uniform-cgv"
+    element :btn_bankwire, "#HOOK_PAYMENT .bankwire"
+    element :btn_confirmOrder, '#cart_navigation > button'
+    
     # endereço
 
       element :text_AdressName, '.address.item .address_name'
@@ -21,23 +29,26 @@ class CheckoutPage < BasePage
 
   # metodos
 
-      def expectAddress(data)
-        binding.pry
-        adressName = "#{data['PrimeiroNome']} #{data['SegundoNome']}"
-        adressComp = data['Empresa']
-        adressA1 = "#{data['Endereço1']} #{data['Endereço1']}"
-        adressCity = "#{data['Cidade']}, #{data['Estado']} #{data['CEP 5digitos']}"
-        adressCountry = "United States"
-        adressTel = data['Telefone']
-        adressCel = data['Celular']
+    def expectAddress(data)
+      adressName = "#{data['PrimeiroNome']} #{data['SegundoNome']}"
+      adressComp = data['Empresa']
+      adressA1 = "#{data['Endereço1']} #{data['Endereço2']}"
+      #adressCity = "#{data['Cidade']}, #{data['Estado']} #{data['CEP 5digitos']}"
+      adressCountry = "United States"
+      adressTel = data['Telefone']
+      adressCel = data['Celular']
 
-        expect(text_AdressName.text).to have_content adressName
-        expect(text_AdressComp.text).to have_content adressComp
-        expect(text_AdressA1.text).to have_content adressA1
-        expect(text_AdressCity.text).to have_content adressCity
-        expect(text_AdressCountry.text).to have_content adressCountry
-        expect(text_AdressTel.text).to have_content adressTel
-        expect(text_AdressCel.text).to have_content adressCel
+      hashTable = {
+        'adressName' => adressName,
+        'adressComp' => adressComp,
+        'adressA1' => adressA1,
+        #'adressCity' => adressCity,
+        'adressCountry' => adressCountry,
+        'adressTel' => adressTel,
+        'adressCel' => adressCel
+      }
+
+      return hashTable
     end
   
     def returnFirstItem(option)
@@ -59,6 +70,36 @@ class CheckoutPage < BasePage
     def returnSumPrice
       text_totalPrice.text
     end
+
+    def clickProcessCheckout
+      sleep(2)
+      btn_processCheckout.click
+      sleep(2)
+    end
+
+    def clickProcessAddress
+      sleep(2)
+      btn_processAdress.click
+      sleep(2)
+    end
+
+    def clickProcessShipping
+      checkbox_agreeTerms.click
+      btn_processShipping.click
+      sleep(2)
+    end
+
+    def clickBankWire
+      sleep(2)
+      btn_bankwire.click
+      sleep(2)
+    end
+
+    def clickFinalButton
+      sleep(2)
+      btn_confirmOrder.click
+      sleep(2)
+    end    
 
     def go
       visit '/index.php?controller=order'
