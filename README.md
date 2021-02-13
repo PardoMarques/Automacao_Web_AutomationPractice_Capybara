@@ -1,7 +1,5 @@
 # *AutomationPractice.com*
 
-<i>Desafio BRQ</i>
-
 Este projeto trata-se de uma automatização de testes de um e-commerce criado para fins de estudos.
 
 
